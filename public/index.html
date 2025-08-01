@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entry Exit Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/qrcode@1.5.4/build/qrcode.min.js"></script>
+    <script type="module" src="https://unpkg.com/qr-scanner@1.4.2/qr-scanner.min.js"></script>
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="loginPage" class="login-container">
+        <div class="floating-element floating-1"></div>
+        <div class="floating-element floating-2"></div>
+        <div class="floating-element floating-3"></div>
+        
+        <div class="login-card">
+            <div class="login-header">
+                <div class="login-icon">🎯</div>
+                <h1>Entry Tracker</h1>
+                <p>Sign in to access the entry/exit tracking system</p>
+            </div>
+            
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Enter your username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                
+                <button type="submit" id="loginBtn" class="login-btn">
+                    <span id="loginBtnText">Sign In</span>
+                </button>
+                
+                <p class="demo-text">Demo: Use any username and password</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboardPage" class="dashboard-container" style="display: none;">
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1>Entry/Exit Tracker</h1>
+                <button id="logoutBtn" class="logout-btn">Logout</button>
+            </div>
+        </header>
+
+        <main class="dashboard-main">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Today's Net Count</h3>
+                    <div id="netCount" class="stat-value">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Entries</h3>
+                    <div id="totalEntries" class="stat-value">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Exits</h3>
+                    <div id="totalExits" class="stat-value">0</div>
+                </div>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="scanner">QR Scanner</button>
+                <button class="tab-btn" data-tab="manual">Manual Entry</button>
+                <button class="tab-btn" data-tab="people">People Management</button>
+            </div>
+
+            <!-- Tab Contents -->
+            <div class="tab-content">
+                <!-- QR Scanner Tab -->
+                <div id="scannerTab" class="tab-panel active">
+                    <div class="scanner-card">
+                        <h3>QR Code Scanner</h3>
+                        <p>Click to open camera and scan QR codes</p>
+                        <button id="startScanBtn" class="primary-btn">Start QR Scanner</button>
+                    </div>
+                </div>
+
+                <!-- Manual Entry Tab -->
+                <div id="manualTab" class="tab-panel">
+                    <div class="manual-card">
+                        <h3>Manual Entry/Exit</h3>
+                        <div class="manual-form">
+                            <input type="text" id="manualName" placeholder="Person's name" required>
+                            <input type="text" id="manualId" placeholder="Person's ID/enrollment number">
+                            <div class="button-group">
+                                <button id="manualEntryBtn" class="entry-btn">Record Entry</button>
+                                <button id="manualExitBtn" class="exit-btn">Record Exit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- People Management Tab -->
+                <div id="peopleTab" class="tab-panel">
+                    <div class="people-card">
+                        <div class="people-header">
+                            <h3>Registered People</h3>
+                            <button id="addPersonBtn" class="primary-btn">Add Person</button>
+                        </div>
+                        <div id="peopleList" class="people-list">
+                            <!-- People will be dynamically added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="activity-card">
+                <h3>Recent Activity</h3>
+                <div id="activityList" class="activity-list">
+                    <!-- Activity items will be dynamically added here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <!-- QR Scanner Modal -->
+    <div id="qrModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>QR Code Scanner</h3>
+                <button id="closeQrModal" class="close-btn">&times;</button>
+            </div>
+            <div class="scanner-container">
+                <video id="qrVideo" class="scanner-video"></video>
+                <div id="scannerStatus" class="scanner-status">Position QR code in camera view</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Entry/Exit Selection Modal -->
+    <div id="entryExitModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Select Action</h3>
+            </div>
+            <div class="modal-body">
+                <p id="scannedPersonInfo">Person details will appear here</p>
+                <div class="button-group">
+                    <button id="selectEntryBtn" class="entry-btn">Entry</button>
+                    <button id="selectExitBtn" class="exit-btn">Exit</button>
+                </div>
+                <button id="cancelEntryExitBtn" class="secondary-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Person Modal -->
+    <div id="addPersonModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Person</h3>
+                <button id="closeAddPersonModal" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addPersonForm">
+                    <div class="form-group">
+                        <label for="newPersonName">Name</label>
+                        <input type="text" id="newPersonName" placeholder="Enter person's name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPersonId">ID/Enrollment Number</label>
+                        <input type="text" id="newPersonId" placeholder="Enter ID or enrollment number">
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" class="primary-btn">Add Person</button>
+                        <button type="button" id="cancelAddPersonBtn" class="secondary-btn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
