@@ -266,38 +266,38 @@ const GoogleSheetsTest = () => {
             
             <div className="space-y-2">
               <h4 className="font-medium">1. Check API Key</h4>
-              <p className="text-sm text-muted-foreground">
-                - Verify your API key is correct and not expired<br/>
-                - Check if API key has restrictions (IP, referrer, etc.)<br/>
-                - Make sure the key is for the correct Google Cloud project
-              </p>
+              <ul className="text-sm text-muted-foreground list-disc list-inside space-y-1">
+                <li>Verify your API key is correct and not expired</li>
+                <li>Check if API key has restrictions (IP, referrer, etc.)</li>
+                <li>Make sure the key is for the correct Google Cloud project</li>
+              </ul>
             </div>
             
             <div className="space-y-2">
               <h4 className="font-medium">2. Enable Google Sheets API</h4>
-              <p className="text-sm text-muted-foreground">
-                - Go to Google Cloud Console<br/>
-                - Navigate to APIs & Services > Library<br/>
-                - Search for "Google Sheets API" and enable it
-              </p>
+              <ul className="text-sm text-muted-foreground list-disc list-inside space-y-1">
+                <li>Go to Google Cloud Console</li>
+                <li>Navigate to APIs & Services > Library</li>
+                <li>Search for "Google Sheets API" and enable it</li>
+              </ul>
             </div>
             
             <div className="space-y-2">
               <h4 className="font-medium">3. Check Spreadsheet Permissions</h4>
-              <p className="text-sm text-muted-foreground">
-                - Make sure the spreadsheet is shared with "Anyone with the link can view"<br/>
-                - Verify the sheet ID is correct<br/>
-                - Check that the required sheets ("Entries" and "People") exist
-              </p>
+              <ul className="text-sm text-muted-foreground list-disc list-inside space-y-1">
+                <li>Make sure the spreadsheet is shared with "Anyone with the link can view"</li>
+                <li>Verify the sheet ID is correct</li>
+                <li>Check that the required sheets ("Entries" and "People") exist</li>
+              </ul>
             </div>
             
             <div className="space-y-2">
               <h4 className="font-medium">4. Check Quota Limits</h4>
-              <p className="text-sm text-muted-foreground">
-                - Google Sheets API has usage limits<br/>
-                - Check your quota usage in Google Cloud Console<br/>
-                - Consider upgrading if you've exceeded limits
-              </p>
+              <ul className="text-sm text-muted-foreground list-disc list-inside space-y-1">
+                <li>Google Sheets API has usage limits</li>
+                <li>Check your quota usage in Google Cloud Console</li>
+                <li>Consider upgrading if you've exceeded limits</li>
+              </ul>
             </div>
           </CardContent>
         </Card>
