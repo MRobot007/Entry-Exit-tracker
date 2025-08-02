@@ -277,7 +277,7 @@ const GoogleSheetsTest = () => {
               <h4 className="font-medium">2. Enable Google Sheets API</h4>
               <ul className="text-sm text-muted-foreground list-disc list-inside space-y-1">
                 <li>Go to Google Cloud Console</li>
-                <li>Navigate to APIs & Services > Library</li>
+                <li>Navigate to APIs & Services {' > '} Library</li>
                 <li>Search for "Google Sheets API" and enable it</li>
               </ul>
             </div>
