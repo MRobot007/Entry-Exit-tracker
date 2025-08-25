@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 215 25% 27%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 27%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 27%;
+
+    --primary: 215 28% 17%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 215 25% 27%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 215 25% 27%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 215 28% 17%;
+
+    /* Entry/Exit specific colors */
+    --entry: 142 71% 45%;
+    --entry-foreground: 0 0% 98%;
+    --entry-muted: 142 71% 95%;
+    
+    --exit: 0 84% 60%;
+    --exit-foreground: 0 0% 98%;
+    --exit-muted: 0 84% 95%;
+    
+    --neutral: 210 20% 78%;
+    --neutral-foreground: 215 25% 27%;
+    
+    /* Gradients */
+    --gradient-entry: linear-gradient(135deg, hsl(142 71% 45%), hsl(142 71% 35%));
+    --gradient-exit: linear-gradient(135deg, hsl(0 84% 60%), hsl(0 84% 50%));
+    --gradient-bg: linear-gradient(135deg, hsl(210 40% 98%), hsl(220 15% 95%));
+    --gradient-primary: linear-gradient(135deg, hsl(215 28% 17%), hsl(215 28% 12%));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(210 40% 98%));
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-entry: 0 10px 30px -10px hsl(142 71% 45% / 0.3);
+    --shadow-exit: 0 10px 30px -10px hsl(0 84% 60% / 0.3);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Professional College Background Schemes */
+    
+    /* Option 1: Classic Academic Blue */
+    --college-blue-bg: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+    --college-blue-card: #ffffff;
+    --college-blue-header: #1e40af;
+    
+    /* Option 2: Warm Ivory */
+    --college-ivory-bg: linear-gradient(135deg, #fefefe 0%, #f5f5f0 50%, #e8e6d9 100%);
+    --college-ivory-card: #ffffff;
+    --college-ivory-header: #8b4513;
+    
+    /* Option 3: Modern Gray */
+    --college-gray-bg: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
+    --college-gray-card: #ffffff;
+    --college-gray-header: #495057;
+    
+    /* Option 4: Professional Navy */
+    --college-navy-bg: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+    --college-navy-card: #ffffff;
+    --college-navy-header: #1e3a8a;
+    
+    /* Option 5: Elegant Burgundy */
+    --college-burgundy-bg: linear-gradient(135deg, #fef2f2 0%, #fee2e2 50%, #fecaca 100%);
+    --college-burgundy-card: #ffffff;
+    --college-burgundy-header: #991b1b;
+    
+    /* Option 6: Fresh Green */
+    --college-green-bg: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
+    --college-green-card: #ffffff;
+    --college-green-header: #166534;
+    
+    /* Option 7: Sophisticated Purple */
+    --college-purple-bg: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #e9d5ff 100%);
+    --college-purple-card: #ffffff;
+    --college-purple-header: #7c3aed;
+    
+    /* Option 8: Corporate Blue */
+    --college-corporate-bg: linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #bfdbfe 100%);
+    --college-corporate-card: #ffffff;
+    --college-corporate-header: #2563eb;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* College Background Theme Classes */
+.college-blue {
+  background: var(--college-blue-bg);
+}
+
+.college-ivory {
+  background: var(--college-ivory-bg);
+}
+
+.college-gray {
+  background: var(--college-gray-bg);
+}
+
+.college-navy {
+  background: var(--college-navy-bg);
+}
+
+.college-burgundy {
+  background: var(--college-burgundy-bg);
+}
+
+.college-green {
+  background: var(--college-green-bg);
+}
+
+.college-purple {
+  background: var(--college-purple-bg);
+}
+
+.college-corporate {
+  background: var(--college-corporate-bg);
+}
